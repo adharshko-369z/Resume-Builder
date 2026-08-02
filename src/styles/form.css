@@ -1,0 +1,169 @@
+/* form */
+form{
+    padding: 0 clamp(0.5rem,4vw,2.5rem);
+    height: calc(100vh - 160px);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content{
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.form-action{
+    margin: 1em 0;
+}
+
+ h2{
+    padding: .5em 0;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+
+/* need edit */
+.project-contanier-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-contanier-top > p{
+    font-size: .875rem;
+}
+
+.error-message{
+    color: #ff0000;
+    font-size: .75rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+label{
+    font-size: .875rem;
+}
+
+input{
+    padding: .5em;
+    margin: 0;
+    font-size: 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+}
+
+textarea{
+    font-family: inherit ;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: .5em;
+    resize: vertical;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+}
+
+.label-input-error-container{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    margin-bottom: .5em;
+}
+
+.preview-wrapper > h2{
+    text-align: center;
+    padding: 1em 0;
+}
+
+.personal-details-section,
+.education-section,
+.summary-section,
+.project-details-contanier,
+.experience-details-contanier,
+.skills-details-contanier{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.summary-section{
+    margin-bottom: 1em;
+}
+
+.personal-details-section,
+.education-section,
+.skills-section,
+.projects-section,
+.experiences-section,
+.summary-section{
+    background-color: #ffffff;
+    padding: clamp(0.5rem,4vw,2.5rem);
+    border-radius: 4px;
+}
+
+.project-details-contanier,
+.experience-details-contanier,
+.skills-details-contanier{
+    margin: clamp(.5em,2vw,1em) 0;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    background-color: #F3F4F6;
+    padding: clamp(.5em,2vw,1em);
+}
+
+/* buttons-css */
+
+.add-btn{
+    background-color: #16A34A;
+}
+
+.add-btn:hover{
+    background-color: #15803D;
+}
+
+.add-disabled-btn,
+.delete-disabled-btn{
+    opacity: .3;
+}
+
+.delete-btn{
+    background-color: #DC2626;
+    width: fit-content;
+    padding: .3em;
+    margin: 0;
+}
+
+.delete-btn:hover{
+    background-color: #B91C1C;
+}
+
+
+.nothing-style-btn{
+    position: relative;
+    visibility: hidden;
+}
+
+
+ @media (min-width : 640px) {
+  #category,
+  #projectTitle,
+  #companyName,
+  #role{
+    width: fit-content;
+  }
+
+  .personal-details-section{
+    display: flex;
+    justify-content: start;
+  }
+  
+  .form-section-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 1em;
+  }
+} 
+
+@media (min-width : 1024px){
+    form{
+        width: 60vw;
+    }
+}

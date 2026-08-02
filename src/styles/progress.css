@@ -1,0 +1,25 @@
+.progression-container{
+    padding: clamp(0.5rem,4vw,2.5rem);
+    padding-bottom: 0;
+    gap: .3em;
+}
+
+.progression-container  > P{
+    font-size: .875rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.progression-tab-btns > button{
+    width: fit-content;
+    font-size: .875rem;
+    background-color: inherit;
+    color: #161616;
+    padding: .5em;
+    margin: 0;
+}
+
+
+@media (min-width : 480px) {
+    
+}

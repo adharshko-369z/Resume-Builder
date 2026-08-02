@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #F3F4F6;
+    color: #161616;
+}
+
+h1,
+h2,
+h3,
+p{
+    margin: 0;
+}
+
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button{
+    width: 100%;
+    padding: .5em 1em;
+    border-radius: 5px;
+    border: none;
+    margin: .5em 0;
+    font-family: inherit;
+    font-size: clamp(.875rem,2vw,1.125rem);
+    font-weight: bold;
+    background-color: #5B21B6;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #4C1D95;
+}
+
+@media (min-width : 1024px) {
+    main{
+        display: flex;
+    }
+
+    .progression-form-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview-download-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+}
