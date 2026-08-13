@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive"
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import resumeIcon  from "./assets/resumeicon.svg"
 import PreviewResume from "./components/PreviewResume"
-import PdfResume from "./components/pdfResume"
+import PdfResume from "./components/PdfResume"
 import FormResume from "./components/Form/FormResume"
 
 // import-custom-hook      
