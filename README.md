@@ -8,7 +8,7 @@ layouts, resume preview, validation, and PDF generation.
 
 ## 🌐 Live Demo
 
-**Live Demo:** YOUR_LIVE_DEMO_URL
+**Live Demo:** https://resume-builder-ko.netlify.app/
 
 ## ✨ Features
 
@@ -72,13 +72,13 @@ src/
 ### 1. Clone the repository
 
 ``` bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/adharshko-369z/Resume-Builder.git
 ```
 
 ### 2. Navigate to the project
 
 ``` bash
-cd resume-builder
+cd Resume-Builder
 ```
 
 ### 3. Install dependencies
@@ -177,5 +177,5 @@ preview, and PDF download workflow.
 
 Frontend Developer / React Developer
 
--   GitHub: YOUR_GITHUB_PROFILE_URL
--   LinkedIn: YOUR_LINKEDIN_PROFILE_URL
+-   GitHub: https://github.com/adharshko-369z
+-   LinkedIn: https://www.linkedin.com/in/adharsh-k-9ab8452a5/
