@@ -54,7 +54,6 @@ export default function PreviewResume({getData}){
         <div className="preview-wrapper">
             <h2>Resume Preview</h2>
             <section className="preview-resume-section"> 
-                <div className="personal-resume-section">
                     <h2>{getData.personalDetails.fullName}</h2>
                     <div className="contact-data">
                         <p>{getData.personalDetails.phoneNumber}</p>
@@ -81,7 +80,6 @@ export default function PreviewResume({getData}){
                             <p className="seperater-comma">,</p>
                             <p>{getData.personalDetails.state}</p>
                     </div>
-                </div>
                 <div className="summary-resume-section">
                     <h3 className="preview-resume-section-heading">Summary</h3>      
                     <p>{getData.summary.professionalSummary}</p>

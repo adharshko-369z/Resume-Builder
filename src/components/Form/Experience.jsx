@@ -19,24 +19,24 @@ export default function Experience({formData,errors,onClick,deleteArrayItem,onCh
                     <p>Experience {index+1}</p>
                     <button className={`delete-btn ${deleteBtnDisabled}`} type="button"  onClick={()=> deleteArrayItem(experience.id, commonAttributes["data-section"])} disabled={formData.experiences.length === 1}>X</button>
                 </div>
-                <div className="form-section-wrapper">
+                <div className="input-cols-container">
                     <div className="label-input-error-container">
                         <label htmlFor="companyName">Company Name</label>
-                        <input type="text" id="companyName" name="companyName" {...commonAttributes} value={experience.companyName} placeholder="Company Name"   required/>
+                        <input type="text" id="companyName" name="companyName" {...commonAttributes} value={experience.companyName} placeholder="ABC Company"   required/>
                         <p className="error-message" >{errors[`companyName_${experience.id}`]}</p>
                     </div>
                     <div className="label-input-error-container">
                         <label htmlFor="role">Role</label>
-                        <input type="text" id="role" name="role" {...commonAttributes} value={experience.role} placeholder="Role"   required/>
+                        <input type="text" id="role" name="role" {...commonAttributes} value={experience.role} placeholder="Frontend Developer Intern"   required/>
                         <p className="error-message" >{errors[`role_${experience.id}`]}</p>
                     </div>
                 </div>
                 <div className="label-input-error-container">
                     <label htmlFor="expDescription">Description</label>
-                    <textarea rows="5" id="expDescription" name="description" {...commonAttributes} value={experience.description} placeholder="type about your experience here..."   required></textarea>
+                    <textarea rows="5" id="expDescription" name="description" {...commonAttributes} value={experience.description} placeholder=" Built responsive user interfaces using React and JavaScript."   required></textarea>
                     <p className="error-message" >{errors[`description_${experience.id}`]}</p>
                 </div>
-                 <div className="form-section-wrapper">
+                 <div className="input-cols-container">
                     <div className="label-input-error-container">
                         <label htmlFor="experienceStartDate">Start</label>
                         <input type="date" id="experienceStartDate" name="experienceStartDate"  {...commonAttributes} value={experience.experienceStartDate} required/>

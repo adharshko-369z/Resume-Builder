@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+// import example data 
+import { exampleResumeData } from "../data/exampleResumeData";
+
 const initialFormData = {
     personalDetails:{
       fullName : "",
@@ -168,14 +171,20 @@ export default function useResumeForm(){
         })
       }
 
+      function loadExampleData(){
+        setFormData(exampleResumeData)
+      }
+
     return{
         formData,
+        setFormData,
         handleChange,
         handleSubmit,
         addProject,
         addExperience,
         addSkills,
         deleteArrayItem,
-        clearResumeData
+        clearResumeData,
+        loadExampleData
     }  
 }

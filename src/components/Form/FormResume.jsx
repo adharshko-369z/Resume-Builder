@@ -14,11 +14,11 @@ export default function FormResume({resumeFormData, resumeSteps}){
       addProject,
       addExperience,
       addSkills,
-      deleteArrayItem,
-      clearResumeData
+      deleteArrayItem
     }= resumeFormData
     
     const {
+    preview,  
     isActive,
     setIsActive,
     currentStep,
@@ -35,23 +35,12 @@ export default function FormResume({resumeFormData, resumeSteps}){
         <div className="progression-form-wrapper">
                 <div className="progression-container">
                     <p>Steps {currentStep}/6</p>
-                    <div className="progression-tab-btns">
-                        {isActive === 'personal'&& <button type="button" className="nothing-style-btn"></button>}
-                        {isActive === 'education'&& <button type="button" onClick={()=> setIsActive("personal")}>&#9664; Back to Personal</button>}
-                        {isActive === 'skills' && <button type="button" onClick={()=> setIsActive("education")} >&#9664; Back to Education</button>}
-                        {isActive=== 'projects' && <button type="button" onClick={()=> setIsActive("skills")} >&#9664; Back to Skills</button>}
-                        {isActive=== 'experience' && <button type="button" onClick={()=> setIsActive("projects")} >&#9664; Back to Projects</button>}
-                        {isActive === 'summary' && <button type="button" onClick={()=> setIsActive("experience")}>&#9664; Back to Experiences</button>}
-                    </div>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} id="form-resume">
                     {isActive=== "personal" && 
                     <>
                       <div className="form-content">
                         <PersonalDetails formData={formData} errors={errors} onChange={handleChange}/>
-                      </div>
-                      <div className="form-action personal-action-btn">
-                        <button type="button" onClick={goToEducation}>Next</button>
                       </div>
                     </>
                     }
@@ -60,18 +49,12 @@ export default function FormResume({resumeFormData, resumeSteps}){
                         <div className="form-content">
                           <Education formData={formData} errors={errors} onChange={handleChange}/>
                         </div>
-                        <div className="form-action">
-                          <button type="button" onClick={goToSkills}>Next</button>
-                        </div>
                       </>
                     }
                     {isActive=== "skills" && 
                       <>
                         <div className="form-content">
                           <Skills formData={formData} errors={errors} onClick={addSkills} deleteArrayItem={deleteArrayItem} onChange={handleChange}/>
-                        </div>
-                        <div className="form-action">
-                          <button type="button" onClick={goToProjects}>Next</button>
                         </div>
                       </>
                     }
@@ -80,18 +63,12 @@ export default function FormResume({resumeFormData, resumeSteps}){
                         <div className="form-content">
                           <Projects formData={formData} errors={errors} onClick={addProject} deleteArrayItem={deleteArrayItem} onChange={handleChange}/>
                         </div>
-                        <div className="form-action">
-                          <button type="button" onClick={goToExperience}>Next</button>
-                        </div>
                       </>
                     }
                     {isActive=== "experience" && 
                       <>
                         <div className="form-content">
                           <Experience formData={formData} errors={errors} onClick={addExperience} deleteArrayItem={deleteArrayItem} onChange={handleChange}/>
-                        </div>
-                        <div className="form-action">
-                          <button type="button" onClick={goToSummary}>Next</button>
                         </div>
                       </>
                     }
@@ -100,12 +77,27 @@ export default function FormResume({resumeFormData, resumeSteps}){
                         <div className="form-content">
                           <Summary formData={formData} errors={errors} onChange={handleChange}/>
                         </div>
-                        <div className="form-action">
-                          <button type="submit" onClick={goToPreview}>Preview Resume</button>
-                        </div>
                       </>
                     }
-                  </form>  
+                  </form> 
+                  <div className="form-actions-btns">
+                    <div className="back-to-btns">
+                      {isActive === 'education'&& <button type="button" onClick={()=> setIsActive("personal")}>&#9664; Back</button>}
+                      {isActive === 'skills' && <button type="button" onClick={()=> setIsActive("education")} >&#9664; Back</button>}
+                      {isActive=== 'projects' && <button type="button" onClick={()=> setIsActive("skills")} >&#9664; Back</button>}
+                      {isActive=== 'experience' && <button type="button" onClick={()=> setIsActive("projects")} >&#9664; Back</button>}
+                      {isActive === 'summary' && <button type="button" onClick={()=> setIsActive("experience")}>&#9664; Back</button>}
+                    </div>
+                    <div className="next-to-btns">
+                      {isActive === 'personal' && <button type="button" onClick={goToEducation}>Next &#9654;</button>}
+                      {isActive === 'education' && <button type="button" onClick={goToSkills}>Next &#9654;</button>}
+                      {isActive === 'skills' && <button type="button" onClick={goToProjects}>Next &#9654;</button>}                  
+                      {isActive === 'projects' && <button type="button" onClick={goToExperience}>Next &#9654;</button>}
+                      {isActive === 'experience' && <button type="button" onClick={goToSummary}>Next &#9654;</button>}
+                      {isActive === 'summary' && <button type="submit" className={preview ? "disable-btn" : ""} form="form-resume" onClick={goToPreview} disabled={preview}>Preview Resume</button>}
+                    </div>
+                  </div> 
             </div>         
     )
-}
+} 
+

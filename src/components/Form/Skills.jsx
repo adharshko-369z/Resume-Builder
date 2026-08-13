@@ -20,12 +20,12 @@ export default function Skills({formData,errors,onChange,onClick,deleteArrayItem
                 </div>
                 <div className="label-input-error-container">
                     <label htmlFor="category">Category</label>
-                    <input type="text" id="category" name="category" {...commonAttributes} value={skill.category} placeholder="lang,tech,tools,soft"   required/>
+                    <input type="text" id="category" name="category" {...commonAttributes} value={skill.category} placeholder="Frontend"   required/>
                     <p className="error-message" >{errors[`category_${skill.id}`]}</p>
                 </div>
                 <div className="label-input-error-container">
                     <label htmlFor="skillsList">Skills</label>
-                    <textarea rows="5" id="skillsList" name="skillsList" {...commonAttributes} value={skill.skillsList} placeholder="type about your skills here with seperate comma"   required></textarea>
+                    <textarea rows="5" id="skillsList" name="skillsList" {...commonAttributes} value={skill.skillsList} placeholder="HTML, CSS, JavaScript, React"   required></textarea>
                     <p className="error-message" >{errors[`skillsList_${skill.id}`]}</p>
                 </div>
             </div>)

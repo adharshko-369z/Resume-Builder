@@ -1,56 +1,67 @@
-/* preview-section */
+/* text-els */
 
-.preview-container{
-    display: flex;
-    justify-content: center;
+.preview-wrapper > h2{
+    margin: 0;
+    padding-bottom: .5rem;
 }
 
-.preview-wrapper{
-    height: calc(1123px *.45);
-    width: calc(794px * .45);
-    overflow: hidden;
-}
-
-.preview-resume-section{
-    background-color: #ffffff;
-    color: #161616;
-    padding: 4em ;
-    width: 794px;
-    min-height: 1123px;
-    transform: scale(.45);
-    transform-origin:top left;
-}
-
-.personal-resume-section > h2{
-    font-size: 1.5rem;
+.preview-resume-section > h2{
+    font-size: 1.2rem;
+    padding: .5em 0;
     margin: 0;
 }
 
 h3.preview-resume-section-heading{
-    font-size: 1.25rem;
-    margin-bottom: .2em;
-    margin-top: .5em;
+    font-size: .95rem;
+    margin-bottom: .35em;
+    margin-top: .75em;
 }
 
 p{
-    font-size: .875rem;
+    font-size: .75rem;
     margin: 0;
     line-height: 1.6;
 }
 
 a{
     color: #161616;
-    font-size: .875rem;
+    font-size: .75rem;
     line-height: 1.6;
     text-decoration: underline;
 }
 
-.list-item-contanier{
-    padding: 0 .5em;
-}
-
 .text-bold{
     font-weight: bold;
+}
+
+/*buttons */
+.download-clear-btn-wrapper> button.enable-clear-btn{
+        border: 1px solid #5B21B6;
+        background-color: #ffffff;
+        color: #5B21B6;
+    }
+
+/* preview-section && container */
+
+.preview-container{
+    padding: .5rem;
+}
+
+.preview-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-resume-section{
+    width: 100%;
+    max-width: 794px;
+    min-height: 297mm;
+    aspect-ratio: auto;
+    background-color: #ffffff;
+    padding: 1rem;
+    overflow-y: auto;
+    margin-bottom: 4rem; 
 }
 
 .contact-data{
@@ -70,18 +81,24 @@ a{
     margin-right: .2em;
 }
 
+.list-item-contanier{
+    padding: 0 .5em;
+}
+
+/* skills */
 .skill-resume-container{
     display: flex;
     gap: .3em;
 }
 
+/* projects */
 .project-resume-container{
     margin: .5em 0;
 }
 
 .project-link{
     display: flex;
-    gap: .2em;
+    gap: .3em;
 }
 
 .experience-top-style{
@@ -89,29 +106,178 @@ a{
     gap: .1em;
 }
 
+
 .education-resume-contanier{
     display: flex;
     flex-wrap: wrap;
     gap: .1em;
 }
 
+.download-clear-btn-wrapper{
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem;
+    border-top: 2px solid #D1D5DB;
+    position: fixed;
+    bottom: 0;
+    /* left: 0; */
+    right: 0;
+}
+
+.download-clear-btn-wrapper > button{
+    width: fit-content;
+    background-color: #D1D5DB;
+    border: 1px solid #D1D5DB;
+}
+
 .download-btn{
     display: block;
-    font-size: 1rem;
+    font-size: .875rem;
     font-weight: bold;
     text-decoration: none;
     color: #ffffff;
     background-color: #5B21B6;
-    padding: .5em;
+    padding: .5rem 1rem;
     border-radius: 4px;
-    width: 96%;
     text-align: center;
-    margin: 2em auto;
+    margin-left: auto;
+}
+
+@media (min-width : 480px) { 
+    
+    .preview-wrapper > h2{
+        padding-bottom: 1rem;
+    }
+
+
+    .preview-container{
+        padding: 1rem;
+    }
+
+    .preview-resume-section{
+        padding: 1rem 2rem;
+    }
+
+    .preview-resume-section > h2{
+        font-size: 1.3rem;
+    }
+
+    .preview-resume-section-heading{
+        font-size: 1rem;
+    }
+
+    p,
+    a{
+        font-size: .8rem;
+    }
+
+}
+
+@media (min-width : 640px) {
+
+    .preview-container{
+        padding: 1rem;
+    }
+
+    .preview-resume-section{
+        padding: 1.5rem 2.5rem;
+    }
+
+    .preview-resume-section > h2{
+        font-size: 1.4rem;
+    }
+
+    .preview-resume-section-heading{
+        font-size: 1.05rem;
+    }
+
+    p,
+    a{
+        font-size: .85rem;
+    }
+}
+
+@media (min-width : 748px) {
+
+    .preview-wrapper > h2{
+        padding-bottom: 1.5rem;
+    }
+
+    .preview-container{
+        padding: 1.5rem;
+    }
+
+    .preview-resume-section{
+        padding: 2rem 3rem;
+    }
+
+    .preview-resume-section > h2{
+        font-size: 1.5rem;
+    }
+
+    .preview-resume-section-heading{
+        font-size: 1.1rem;
+    }
+
+    p,
+    a{
+        font-size: .9rem;
+    }
+
+    .download-clear-btn-wrapper{
+        padding: 1rem 1.5rem;
+    }
 }
 
 @media (min-width : 1024px){
+
     .preview-container{
-        display: block;
-        width: 40vw;
+        padding: 1rem;
+        margin-right: 1rem;
     }
+
+    .preview-wrapper > h2{
+        padding-bottom: 1rem;
+    }
+
+    .preview-resume-section{
+        padding: 1.5rem 2.5rem;
+    }
+
+    .preview-resume-section > h2{
+        font-size: 1.4rem;
+    }
+
+    .preview-resume-section-heading{
+        font-size: 1.05rem;
+    }
+
+    p,
+    a{
+        font-size: .75rem;
+    }
+
+    .download-clear-btn-wrapper{
+        width: 40%;
+    }
+    
+    .preview-placeholder-wrapper{
+        min-height: 297mm;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        margin: 3.5rem 1rem 6rem;
+        padding: 12rem 0;
+    }
+
+    .preview-placeholder-wrapper > .download-clear-btn-wrapper > .download-btn{
+        background-color: #D1D5DB;
+    }
+
 }

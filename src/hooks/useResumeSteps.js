@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useMediaQuery } from "react-responsive"
 
 import { validateSummary,
       validateEducation,
@@ -12,12 +11,12 @@ import { validateSummary,
 export default function useResumeSteps(formData){ 
     
   const [preview,setPreview] = useState(false)
+  const [renderHeaderBtns, setRenderHeaderBtns] = useState(false)
   const [isActive, setIsActive] = useState("personal")
   const [errors , setErrors] = useState({})
   const [currentStep, setCurrentStep] = useState(1)
-  const isDesktop = useMediaQuery({
-    minWidth : "1024px"
-  })
+  const [isDownloadResume, setIsDownloadResume] = useState(false)
+  const [needLoadBtn, setNeedLoadBtn ] = useState(true)
 
   function goToEducation(){
     const personalDetailsError = validatePersonalDetails(formData.personalDetails)
@@ -86,23 +85,58 @@ export default function useResumeSteps(formData){
     setErrors(summaryError)
     if(Object.keys(summaryError).length === 0) {
       setPreview(true)
+      setRenderHeaderBtns(true)
     }   
+  }
+
+  function checkTrue(){
+    const check = [
+      ()=> validatePersonalDetails(formData.personalDetails),
+      ()=> validateEducation(formData.education),
+      ()=> validateSkills(formData.skills),
+      ()=> validateProjects(formData.projects),
+      ()=> validateExperiences(formData.experiences),
+      ()=> validateSummary(formData.summary)
+    ]
+
+    const allErrors = check.reduce((flattened, fn)=>({
+      ...flattened,
+      ...fn()
+    }),{})
+    const hasError = Object.values(allErrors).some(errObj => Object.keys(errObj).length > 0)
+
+    if(!hasError){
+      setPreview(true)
+      setErrors({})
+    }else{
+      setPreview(false)
+      setErrors(allErrors)
+      console.log("Validation Failed. Current Errors:",allErrors)
+    }
+
   }
 
   return{
     preview,
+    renderHeaderBtns,
+    setRenderHeaderBtns,
     setPreview,
     isActive,
     setIsActive,
     currentStep,
+    setCurrentStep,
+    isDownloadResume,
+    setIsDownloadResume,
+    needLoadBtn,
+    setNeedLoadBtn,
     errors,
-    isDesktop,
     goToEducation,
     goToSkills,
     goToProjects,
     goToExperience,
     goToSummary,
-    goToPreview
+    goToPreview,
+    checkTrue,
   }
     
 }

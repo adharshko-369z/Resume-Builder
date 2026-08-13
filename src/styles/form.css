@@ -1,30 +1,149 @@
-/* form */
+/* text-el && form-el */
+
+h2{
+    font-size: 1.125rem;
+    margin-bottom: .5em;
+}
+
+label{
+    font-size: .875rem;
+}
+
+input{
+    font-size: 1rem;
+    padding: .5rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 5px;
+}
+
+textarea{
+    font-family: inherit ;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: .5em;
+    resize: vertical;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+}
+
+input:focus,
+textarea:focus{
+    outline: none;
+    border-color: goldenrod;
+}
+
+/* buttons */
+
+.next-to-btns> button[type="submit"]{
+    background-color: #5B21B6;
+    color: #ffffff;
+}
+
+.next-to-btns > button[type="submit"].disable-btn{
+    background-color: #D1D5DB;
+    border: 1px solid #D1D5DB;
+}
+
+.add-btn{
+    color: #5B21B6;
+    background-color: #ffffff;
+    border: 2px dashed #5B21B6;
+}
+
+.add-btn:hover{
+    background-color: #5B21B6;
+    color: #ffffff;
+}
+
+.delete-btn{
+    background-color: #DC2626;
+    width: fit-content;
+    padding: .3em;
+    margin: 0;
+    margin-left: auto;
+}
+
+.delete-btn:hover{
+    background-color: #B91C1C;
+}
+
+.add-disabled-btn,
+.delete-disabled-btn{
+    opacity: .3;
+}
+
+.back-to-btns > button,
+.next-to-btns > button{
+    color: #5B21B6;
+    background-color: #ffffff;
+}
+
+.back-to-btns > button:hover,
+.next-to-btns > button:hover{
+    color: #ffffff;
+    background-color: #5B21B6;
+
+}
+
+/* containers && wrapper */
+
+.progression-form-wrapper{
+    padding: .5rem;
+}
+
 form{
-    padding: 0 clamp(0.5rem,4vw,2.5rem);
-    height: calc(100vh - 160px);
+    background-color: #ffffff;
+    border-radius: 4px;
+    overflow-y: auto;
+    padding: .5rem;
+    margin-bottom: 4rem;
+}
+
+.label-input-error-container{
     display: flex;
     flex-direction: column;
+    gap: .5em;
+    margin-bottom: .5em;
 }
 
-.form-content{
-    flex-grow: 1;
-    overflow-y: auto;
+.skills-section,
+.projects-section,
+.experiences-section{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
-.form-action{
-    margin: 1em 0;
+.project-details-contanier,
+.experience-details-contanier,
+.skills-details-contanier{
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    padding: .5rem;
 }
 
- h2{
-    padding: .5em 0;
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-}
-
-/* need edit */
-.project-contanier-top{
+/* buttons container */
+.form-actions-btns{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: .5rem ;
+    border-top: 2px solid #D1D5DB;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+/* list items containers skills, projects, experience */
+
+.project-contanier-top{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .5rem;
 }
 
 .project-contanier-top > p{
@@ -38,132 +157,75 @@ form{
     margin: 0;
 }
 
-label{
-    font-size: .875rem;
+@media (min-width : 480px) {
+    .progression-form-wrapper{
+        padding: 1rem;
+    }
+
+    form{
+        padding: 1rem;
+    }
+
+    .form-actions-btns{
+        padding: 1rem;
+    }
 }
 
-input{
-    padding: .5em;
-    margin: 0;
-    font-size: 1rem;
-    border: 1px solid #D1D5DB;
-    border-radius: 4px;
+@media (min-width : 640px){
+
+    h2{
+        margin-bottom: .75em;
+    }
+
+    form{
+        margin-bottom: 5rem;
+    }
+
+    .input-cols-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .project-contanier-top{
+        margin-bottom: 1rem;
+    }
+
+    .project-contanier-top > p{
+        font-size: .875rem;
+    }
+    
 }
 
-textarea{
-    font-family: inherit ;
-    font-size: 1rem;
-    line-height: 1.5;
-    padding: .5em;
-    resize: vertical;
-    border: 1px solid #D1D5DB;
-    border-radius: 4px;
+@media (min-width : 748px){
+    form{
+        padding: 1.5rem;
+    }
+
+    .project-details-contanier,
+    .experience-details-contanier,
+    .skills-details-contanier{
+        padding: 1rem;
+    }
+
+    .skills-section,
+    .projects-section,
+    .experiences-section{
+        gap: 1rem;
+    }
+
+     .form-actions-btns{
+        padding: 1rem 1.5rem;
+    }
+
 }
-
-.label-input-error-container{
-    display: flex;
-    flex-direction: column;
-    gap: .5em;
-    margin-bottom: .5em;
-}
-
-.preview-wrapper > h2{
-    text-align: center;
-    padding: 1em 0;
-}
-
-.personal-details-section,
-.education-section,
-.summary-section,
-.project-details-contanier,
-.experience-details-contanier,
-.skills-details-contanier{
-    display: flex;
-    flex-direction: column;
-    gap: .5em;
-}
-
-.summary-section{
-    margin-bottom: 1em;
-}
-
-.personal-details-section,
-.education-section,
-.skills-section,
-.projects-section,
-.experiences-section,
-.summary-section{
-    background-color: #ffffff;
-    padding: clamp(0.5rem,4vw,2.5rem);
-    border-radius: 4px;
-}
-
-.project-details-contanier,
-.experience-details-contanier,
-.skills-details-contanier{
-    margin: clamp(.5em,2vw,1em) 0;
-    border: 1px solid #D1D5DB;
-    border-radius: 4px;
-    background-color: #F3F4F6;
-    padding: clamp(.5em,2vw,1em);
-}
-
-/* buttons-css */
-
-.add-btn{
-    background-color: #16A34A;
-}
-
-.add-btn:hover{
-    background-color: #15803D;
-}
-
-.add-disabled-btn,
-.delete-disabled-btn{
-    opacity: .3;
-}
-
-.delete-btn{
-    background-color: #DC2626;
-    width: fit-content;
-    padding: .3em;
-    margin: 0;
-}
-
-.delete-btn:hover{
-    background-color: #B91C1C;
-}
-
-
-.nothing-style-btn{
-    position: relative;
-    visibility: hidden;
-}
-
-
- @media (min-width : 640px) {
-  #category,
-  #projectTitle,
-  #companyName,
-  #role{
-    width: fit-content;
-  }
-
-  .personal-details-section{
-    display: flex;
-    justify-content: start;
-  }
-  
-  .form-section-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0 1em;
-  }
-} 
 
 @media (min-width : 1024px){
-    form{
-        width: 60vw;
+    .form-actions-btns{
+        width: 60%;
+    }
+
+    .add-btn{
+        width: fit-content;
     }
 }
