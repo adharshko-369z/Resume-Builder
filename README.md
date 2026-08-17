@@ -145,31 +145,21 @@ While building this project, I practiced:
 -   Structuring a React project into components, hooks, data, styles,
     and utilities
 
-## 🔮 Possible Future Improvements
-
--   More resume templates
--   Additional customization options
--   Better desktop spacing at some intermediate viewport sizes
--   More resume formatting controls
--   Persistent resume drafts
--   Multiple saved resumes
--   Additional export options
-
 ## 📸 Screenshots
 
-Add screenshots of:
+### Desktop
 
--   Form
--   Desktop preview
--   Mobile preview
--   PDF output
+<p align="center">
+  <img src="./public/screenshots/desktop-before.png" width="48%" alt="Desktop form with placeholder preview">
+  <img src="./public/screenshots/desktop-after.png" width="48%" alt="Desktop form with resume preview">
+</p>
 
-## 📌 Project Status
+### Mobile
 
-**Version:** 0.0.0
-
-The current version is an MVP focused on the core resume creation,
-preview, and PDF download workflow.
+<p align="center">
+  <img src="./public/screenshots/mobile-form.png" width="48%" alt="Mobile resume form">
+  <img src="./public/screenshots/mobile-preview.png" width="48%" alt="Mobile resume preview">
+</p>
 
 ## 👤 Author
 
