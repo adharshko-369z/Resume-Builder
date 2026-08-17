@@ -157,8 +157,8 @@ While building this project, I practiced:
 ### Mobile
 
 <p align="center">
-  <img src="./public/screenshots/mobile-form.jpg" width="48%" alt="Mobile resume form">
-  <img src="./public/screenshots/mobile-preview.jpg" width="48%" alt="Mobile resume preview">
+  <img src="./public/screenshots/mobile-form.jpg" width="35%" height="500" alt="Mobile resume form">
+  <img src="./public/screenshots/mobile-preview.jpg" width="35%" height="500" alt="Mobile resume preview">
 </p>
 
 ## 👤 Author
