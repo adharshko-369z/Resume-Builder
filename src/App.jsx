@@ -28,6 +28,8 @@ function App() {
     resumeFormData.clearResumeData()
     resumeSteps.setIsDownloadResume(false)
     resumeSteps.setNeedLoadBtn(true)
+    resumeSteps.setSkippedExperience(false)
+    resumeSteps.setSkippedProjects(false)
   }
 
   return (
@@ -57,13 +59,13 @@ function App() {
         <FormResume resumeFormData={resumeFormData} resumeSteps={resumeSteps} />
         : 
         <>
-        <PreviewResume getData={resumeFormData.formData}/>
+        <PreviewResume getData={resumeFormData.formData} skippedProjects={resumeSteps.skippedProjects} skippedExperience={resumeSteps.skippedExperience}/>
           <div className="download-clear-btn-wrapper">
             <button className={resumeSteps.isDownloadResume ? "enable-clear-btn" : ""} onClick={resetApp} disabled={!resumeSteps.isDownloadResume}>Clear</button>
             <PDFDownloadLink 
               className="download-btn"
               onClick={()=> resumeSteps.setIsDownloadResume(true)}
-              document={<PdfResume getData={resumeFormData.formData} />} 
+              document={<PdfResume getData={resumeFormData.formData} skippedProjects={resumeSteps.skippedProjects} skippedExperience={resumeSteps.skippedExperience}/>} 
               fileName="resume.pdf"
             >
               Download 
@@ -77,14 +79,14 @@ function App() {
       <FormResume resumeFormData={resumeFormData} resumeSteps={resumeSteps} dataToDisplay ={resumeFormData.formData} />
       { resumeSteps.preview ? 
         <div className="preview-download-wrapper">
-          <PreviewResume getData={resumeFormData.formData}/>
+          <PreviewResume getData={resumeFormData.formData} skippedProjects={resumeSteps.skippedProjects} skippedExperience={resumeSteps.skippedExperience}/>
           <div className="download-clear-btn-wrapper">
 
             <button className={resumeSteps.isDownloadResume ? "enable-clear-btn" : ""} onClick={resetApp} disabled={!resumeSteps.isDownloadResume}>Clear</button>
             <PDFDownloadLink 
               className="download-btn"
               onClick={()=> resumeSteps.setIsDownloadResume(true)}
-              document={<PdfResume getData={resumeFormData.formData} />} 
+              document={<PdfResume getData={resumeFormData.formData} skippedProjects={resumeSteps.skippedProjects} skippedExperience={resumeSteps.skippedExperience}/>} 
               fileName="resume.pdf"
               >
                 Download Resume

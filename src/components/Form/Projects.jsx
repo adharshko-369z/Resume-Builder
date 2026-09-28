@@ -1,4 +1,16 @@
-export default function Projects({formData,errors,onClick,deleteArrayItem,onChange}){
+import { useEffect } from "react"
+
+export default function Projects({formData, errors, onClick, deleteArrayItem, onChange, skippedProjects, setSkippedProjects, skipProjects}){
+
+    useEffect(()=>{
+        Object.values(formData.projects).map(project => {
+            if(project.projectTitle !== "" || project.technologies !== "" || project.description !== "" || project.projectGithub !== "" || project.projectLiveLink !== ""){
+                setSkippedProjects(false)
+            }
+        })
+    },[formData.projects, setSkippedProjects])
+
+
 
     const addBtnDisabled = formData.projects.length === 3 ? "add-disabled-btn" : ""
     const deleteBtnDisabled = formData.projects.length === 1 ? "delete-disabled-btn" : ""
@@ -48,7 +60,10 @@ export default function Projects({formData,errors,onClick,deleteArrayItem,onChan
 
     return(
         <section className="projects-section">
-            <h2>Projects</h2>
+            <div className="projects-header">
+                <h2>Projects</h2>
+                <button type="button" className={skippedProjects ? "" : "skip-btn"} onClick={skipProjects}>{skippedProjects ? "Skipped" : "Skip"}</button>
+            </div>
             {projectDivEl}
            <button className={`add-btn ${addBtnDisabled}`} type="button" onClick={onClick} disabled={formData.projects.length === 3}>Add next project</button>
         </section>

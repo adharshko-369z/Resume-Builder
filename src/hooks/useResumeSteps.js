@@ -17,12 +17,29 @@ export default function useResumeSteps(formData){
   const [currentStep, setCurrentStep] = useState(1)
   const [isDownloadResume, setIsDownloadResume] = useState(false)
   const [needLoadBtn, setNeedLoadBtn ] = useState(true)
+  const [skippedProjects, setSkippedProjects] = useState(false)
+  const [skippedExperience, setSkippedExperience] = useState(false)
+
+  function skipProjects(){
+    setSkippedProjects(true)
+    if(currentStep === 4){
+      setCurrentStep(prevStep=> prevStep+1)
+    }
+    setIsActive("experience")
+  }
+
+  function skipExperience(){
+    setSkippedExperience(true)
+    if(currentStep === 5){
+      setCurrentStep(prevStep=> prevStep+1)
+    }
+    setIsActive("summary")
+  }
 
   function goToEducation(){
     const personalDetailsError = validatePersonalDetails(formData.personalDetails)
     setErrors(personalDetailsError)
     if(Object.keys(personalDetailsError).length === 0){
-
       if(currentStep === 1){
         setCurrentStep(prevStep=> prevStep+1)
     }
@@ -59,7 +76,7 @@ export default function useResumeSteps(formData){
     setErrors(projectsError)
 
     if(Object.keys(projectsError).length === 0){
-
+      setSkippedProjects(false)
       if(currentStep === 4){
         setCurrentStep(prevStep=> prevStep+1)
       }
@@ -72,7 +89,7 @@ export default function useResumeSteps(formData){
     setErrors(experiencesError)
 
     if(Object.keys(experiencesError).length === 0){
-
+      setSkippedExperience(false)
       if(currentStep === 5){
         setCurrentStep(prevStep=> prevStep+1)
       }
@@ -90,12 +107,16 @@ export default function useResumeSteps(formData){
   }
 
   function checkTrue(){
+
+    const needProjectsValidate = skippedProjects ? {} : validateProjects(formData.projects)
+    const needExperienceValidate = skippedExperience ? {} : validateExperiences(formData.experiences)
+
     const check = [
       ()=> validatePersonalDetails(formData.personalDetails),
       ()=> validateEducation(formData.education),
       ()=> validateSkills(formData.skills),
-      ()=> validateProjects(formData.projects),
-      ()=> validateExperiences(formData.experiences),
+      ()=> needProjectsValidate,
+      ()=> needExperienceValidate,
       ()=> validateSummary(formData.summary)
     ]
 
@@ -137,6 +158,12 @@ export default function useResumeSteps(formData){
     goToSummary,
     goToPreview,
     checkTrue,
+    skippedProjects,
+    setSkippedProjects,
+    skippedExperience,
+    setSkippedExperience,
+    skipProjects,
+    skipExperience
   }
     
 }

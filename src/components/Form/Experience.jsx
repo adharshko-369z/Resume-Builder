@@ -1,5 +1,14 @@
+import { useEffect } from "react"
 
-export default function Experience({formData,errors,onClick,deleteArrayItem,onChange}){
+export default function Experience({formData, errors, onClick, deleteArrayItem, onChange, skippedExperience, setSkippedExperience, skipExperience}){
+
+    useEffect(()=>{
+            Object.values(formData.experiences).map(experience => {
+                if(experience.companyName !== "" || experience.description !== "" || experience.experienceStartDate !== "" || experience.experienceEndDate !== "" || experience.role !== ""){
+                    setSkippedExperience(false)
+                }
+            })
+        },[formData.experiences, setSkippedExperience])
 
     const addBtnDisabled = formData.experiences.length === 2 ? "add-disabled-btn" : ""
     const deleteBtnDisabled = formData.experiences.length === 1 ? "delete-disabled-btn" : ""
@@ -55,7 +64,10 @@ export default function Experience({formData,errors,onClick,deleteArrayItem,onCh
     return(
         <>
         <section className="experiences-section">
-            <h2>Experience</h2>
+            <div className="experiences-header">
+                <h2>Experience</h2>
+                <button type="button" className={skippedExperience ? "" : "skip-btn"} onClick={skipExperience}>{skippedExperience ? "Skipped" : "Skip"}</button>
+            </div>
             {experiencesDivEl}
             <button className={`add-btn ${addBtnDisabled}`} type="button" onClick={onClick} disabled={formData.experiences.length === 2}>Add next experience</button>
         </section>

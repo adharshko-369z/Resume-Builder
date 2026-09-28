@@ -28,7 +28,13 @@ export default function FormResume({resumeFormData, resumeSteps}){
     goToProjects,
     goToExperience,
     goToSummary,
-    goToPreview
+    goToPreview,
+    skippedProjects,
+    setSkippedProjects,
+    skippedExperience,
+    setSkippedExperience,
+    skipProjects,
+    skipExperience
     }=resumeSteps
 
     return(
@@ -61,14 +67,14 @@ export default function FormResume({resumeFormData, resumeSteps}){
                     {isActive=== "projects" && 
                       <>
                         <div className="form-content">
-                          <Projects formData={formData} errors={errors} onClick={addProject} deleteArrayItem={deleteArrayItem} onChange={handleChange}/>
+                          <Projects formData={formData} errors={errors} onClick={addProject} deleteArrayItem={deleteArrayItem} onChange={handleChange} skipProjects={skipProjects} skippedProjects={skippedProjects} setSkippedProjects={setSkippedProjects}/>
                         </div>
                       </>
                     }
                     {isActive=== "experience" && 
                       <>
                         <div className="form-content">
-                          <Experience formData={formData} errors={errors} onClick={addExperience} deleteArrayItem={deleteArrayItem} onChange={handleChange}/>
+                          <Experience formData={formData} errors={errors} onClick={addExperience} deleteArrayItem={deleteArrayItem} onChange={handleChange} skipExperience={skipExperience} skippedExperience={skippedExperience} setSkippedExperience={setSkippedExperience}/>
                         </div>
                       </>
                     }
@@ -92,8 +98,8 @@ export default function FormResume({resumeFormData, resumeSteps}){
                       {isActive === 'personal' && <button type="button" onClick={goToEducation}>Next &#9654;</button>}
                       {isActive === 'education' && <button type="button" onClick={goToSkills}>Next &#9654;</button>}
                       {isActive === 'skills' && <button type="button" onClick={goToProjects}>Next &#9654;</button>}                  
-                      {isActive === 'projects' && <button type="button" onClick={goToExperience}>Next &#9654;</button>}
-                      {isActive === 'experience' && <button type="button" onClick={goToSummary}>Next &#9654;</button>}
+                      {isActive === 'projects' && <button type="button" onClick={()=>skippedProjects? skipProjects() : goToExperience()}>Next &#9654;</button>}
+                      {isActive === 'experience' && <button type="button" onClick={()=>skippedExperience? skipExperience() : goToSummary()}>Next &#9654;</button>}
                       {isActive === 'summary' && <button type="submit" className={preview ? "disable-btn" : ""} form="form-resume" onClick={goToPreview} disabled={preview}>Preview Resume</button>}
                     </div>
                   </div> 

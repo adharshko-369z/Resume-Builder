@@ -1,5 +1,5 @@
 
-export default function PreviewResume({getData}){
+export default function PreviewResume({getData, skippedProjects, skippedExperience}){
    
     const projectsRenderEl = getData.projects.map(project =>{
         return(
@@ -8,18 +8,22 @@ export default function PreviewResume({getData}){
                 <p>{(project.technologies).replaceAll(", "," • ")}</p>
                 <p>{project.description}</p>
                 <div>
+                    {project.projectGithub &&
                     <div className="project-link">
                         <p>GitHub:</p>
                         <a href={project.projectGithub} target="_blank" rel="noopener noreferrer">
                             {project.projectGithub.replace("https://", "")}
                         </a>
                     </div>
+                    }
+                    {project.projectLiveLink &&
                     <div className="project-link">
                         <p>Live Link:</p>
                         <a href={project.projectLiveLink} target="_blank" rel="noopener noreferrer">
                             {project.projectLiveLink.replace("https://", "")}
                         </a>
                     </div>
+                    }
                 </div>
             </div>
         ) 
@@ -88,14 +92,18 @@ export default function PreviewResume({getData}){
                     <h3 className="preview-resume-section-heading">Skills</h3>
                     {skillsRenderEl}
                 </div>
+                {!skippedProjects && 
                 <div className="projects-resume-section ">
                     <h3 className="preview-resume-section-heading">Projects</h3>
                         {projectsRenderEl}
                 </div> 
+                }
+                {!skippedExperience &&
                 <div className="experiences-resume-section">
                     <h3 className="preview-resume-section-heading">Experiences</h3>
                         {experiencesRenderEl}
-                </div>  
+                </div> 
+                } 
                 <div className="educatiion-resume-section">
                     <h3 className="preview-resume-section-heading">Education</h3>
                     <div className="education-resume-contanier">

@@ -2,7 +2,7 @@ import { Document, Page, Text, View, Link , StyleSheet } from '@react-pdf/render
 
 
 
-export default function PdfResume({getData}){
+export default function PdfResume({getData, skippedProjects, skippedExperience}){
     
     const styles = StyleSheet.create({
     page :{
@@ -151,14 +151,18 @@ return (
                 <Text style={styles.sectionHeading}>Skills</Text>
                 {skillsEl}
             </View>
+            {!skippedProjects &&
             <View>
                 <Text style={styles.sectionHeading}>Projects</Text>
                 {projectsEl}
             </View>
+            }
+            { !skippedExperience &&
             <View>
                 <Text style={styles.sectionHeading}>Experiences</Text>
                 {experiencesEl}
             </View>
+            }
             <View>
                   <Text style={styles.sectionHeading}>Education</Text>
                   <View style={[styles.paragraph,styles.educationData]}>

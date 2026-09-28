@@ -34,6 +34,16 @@ textarea:focus{
 
 /* buttons */
 
+.skip-btn{
+    background-color: #ffffff;
+    color: #5B21B6;
+}
+
+.skip-btn:hover{
+    background-color: #5B21B6;
+    color: #ffffff;
+}
+
 .next-to-btns> button[type="submit"]{
     background-color: #5B21B6;
     color: #ffffff;
@@ -120,6 +130,18 @@ form{
     border: 1px solid #D1D5DB;
     border-radius: 4px;
     padding: .5rem;
+}
+
+.projects-section > .projects-header,
+.experiences-section > .experiences-header{
+    display: flex;
+    align-items: center;
+}
+
+.projects-header > button,
+.experiences-header > button{
+    width: fit-content;
+    margin-left: auto;
 }
 
 /* buttons container */
