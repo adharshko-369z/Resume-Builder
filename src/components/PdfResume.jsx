@@ -1,4 +1,5 @@
 import { Document, Page, Text, View, Link , StyleSheet } from '@react-pdf/renderer'
+import { toBulletPoints } from '../utils/formatText'
 
 
 
@@ -43,7 +44,6 @@ export default function PdfResume({getData, skippedProjects, skippedExperience})
     locationData :{
         flexDirection : "row",
         paddingTop : 10,
-        gap : 2
     },
     educationData : {
         flexDirection : "row",
@@ -58,7 +58,7 @@ export default function PdfResume({getData, skippedProjects, skippedExperience})
     listItemContanier : {
         paddingTop : 5,
         paddingBottom : 5,
-        paddingLeft : 10,
+        paddingLeft : 10,   
         paddingRight : 10
         
     },
@@ -69,6 +69,9 @@ export default function PdfResume({getData, skippedProjects, skippedExperience})
     experienceTopStyle : {
         flexDirection : "row",
         gap : 3
+    },
+    bulletRow : {
+        flexDirection : "row",
     }
    
 })
@@ -78,8 +81,17 @@ const projectsEl = getData.projects.map(project =>{
     return(
         <View key={project.id} style={[styles.paragraph, styles.listItemContanier]}>
             <Text style={styles.textBold}>{project.projectTitle}</Text>
-            <Text style={{alignContent : "center"}}>{(project.technologies).replaceAll(", "," • ")}</Text>
-            <Text>{project.description}</Text>
+            <Text style={{alignContent : "center", fontStyle : "italic"}}>{(project.technologies)}</Text>
+            <View style={{margin : 2}}>
+                {toBulletPoints(project.description).map((sentence, index) => {
+                                        return(
+                                            <View style={styles.bulletRow} key={index}>
+                                                <Text>• </Text>
+                                                <Text>{sentence}</Text>
+                                            </View>
+                                        )
+                                    })}
+            </View>
             <View>
                 {project.projectGithub &&<View style={styles.projectLink}>
                     <Text>GitHub:</Text>
@@ -138,9 +150,9 @@ return (
             </View>
             <View style={[styles.locationData, styles.paragraph]}>
                 <Text>{getData.personalDetails.city}</Text>
-                {getData.personalDetails.district && <Text>,</Text>}
+                {getData.personalDetails.district && <Text style={{marginRight : 2}}>,</Text>}
                 <Text>{getData.personalDetails.district}</Text>
-                {getData.personalDetails.state && <Text>,</Text>}
+                {getData.personalDetails.state && <Text style={{marginRight : 2}}>,</Text>}
                 <Text>{getData.personalDetails.state}</Text>
             </View>
             <View style={styles.summarySection}>

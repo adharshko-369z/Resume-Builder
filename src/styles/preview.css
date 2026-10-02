@@ -17,7 +17,8 @@ h3.preview-resume-section-heading{
     margin-top: .75em;
 }
 
-p{
+p,
+li{
     font-size: .75rem;
     margin: 0;
     line-height: 1.6;
@@ -42,6 +43,11 @@ a{
     }
 
 /* preview-section && container */
+
+ul{
+    padding-left: 1rem;
+    margin: .25rem;
+}
 
 .preview-container{
     padding: .5rem;
@@ -94,6 +100,10 @@ a{
 /* projects */
 .project-resume-container{
     margin: .5em 0;
+}
+
+.project-technologies{
+    font-style: italic;
 }
 
 .project-link{

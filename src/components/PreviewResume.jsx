@@ -1,12 +1,21 @@
+import { toBulletPoints } from "../utils/formatText"
+
 
 export default function PreviewResume({getData, skippedProjects, skippedExperience}){
    
     const projectsRenderEl = getData.projects.map(project =>{
+
         return(
             <div key={project.id} className="project-resume-container list-item-contanier">
                 <p className="text-bold">{project.projectTitle}</p>
-                <p>{(project.technologies).replaceAll(", "," • ")}</p>
-                <p>{project.description}</p>
+                <p className="project-technologies" >{(project.technologies)}</p>
+                <ul>
+                    {toBulletPoints(project.description).map((sentence, index) => {
+                        return(
+                            <li key={index} >{sentence}</li>
+                        )
+                    })}
+                </ul>
                 <div>
                     {project.projectGithub &&
                     <div className="project-link">
