@@ -87,7 +87,7 @@ function App() {
               className="download-btn"
               onClick={()=> resumeSteps.setIsDownloadResume(true)}
               document={<PdfResume getData={resumeFormData.formData} skippedProjects={resumeSteps.skippedProjects} skippedExperience={resumeSteps.skippedExperience}/>} 
-              fileName="resume.pdf"
+              fileName= "resume.pdf"
               >
                 Download Resume
               </PDFDownloadLink>

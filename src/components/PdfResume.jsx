@@ -1,7 +1,7 @@
-import { Document, Page, Text, View, Link , StyleSheet } from '@react-pdf/renderer'
+import { Document, Page, Text, View, Link , StyleSheet, Font } from '@react-pdf/renderer'
 import { toBulletPoints } from '../utils/formatText'
 
-
+Font.registerHyphenationCallback(word => [word])
 
 export default function PdfResume({getData, skippedProjects, skippedExperience}){
     
