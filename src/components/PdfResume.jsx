@@ -58,7 +58,7 @@ export default function PdfResume({getData, skippedProjects, skippedExperience})
     listItemContanier : {
         paddingTop : 5,
         paddingBottom : 5,
-        paddingLeft : 10,   
+        // paddingLeft : 10,   
         paddingRight : 10
         
     },
@@ -159,10 +159,6 @@ return (
                 <Text style={styles.sectionHeading}>Summary</Text> 
                 <Text style={styles.paragraph}>{getData.summary.professionalSummary}</Text>     
             </View>
-            <View>
-                <Text style={styles.sectionHeading}>Skills</Text>
-                {skillsEl}
-            </View>
             {!skippedProjects &&
             <View>
                 <Text style={styles.sectionHeading}>Projects</Text>
@@ -175,6 +171,10 @@ return (
                 {experiencesEl}
             </View>
             }
+            <View>
+                <Text style={styles.sectionHeading}>Skills</Text>
+                {skillsEl}
+            </View>
             <View>
                   <Text style={styles.sectionHeading}>Education</Text>
                   <View style={[styles.paragraph,styles.educationData]}>

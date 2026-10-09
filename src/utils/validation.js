@@ -1,3 +1,19 @@
+function isHttpsUrl(value){
+  if(value === "") return true
+  try {
+    const url  = new URL(value)
+    return url.protocol === "https:" && url.hostname.includes(".")
+  } catch {
+    return false
+  }
+}
+
+function validateDateRange(start,end){
+  const startDate = start.replaceAll("-", "")
+  const endDate = end.replaceAll("-", "")
+  if(Number(endDate) < Number(startDate)) return false
+  return true
+}
 
 // summary
 export function validateSummary(summary){
@@ -11,7 +27,7 @@ export function validateSummary(summary){
   } 
 
 // education
-export  function validateEducation(education){
+export function validateEducation(education){
     const error = {}
 
     if(!education.degreeName.trim()){
@@ -32,10 +48,7 @@ export  function validateEducation(education){
     if(!educationEndDateTrimed){
       error.educationEndDate = "Ended date is required"
     }else 
-    if(educationStartDateTrimed && educationEndDateTrimed){
-      const start = new Date(educationStartDateTrimed)
-      const end =   new Date(educationEndDateTrimed)
-      if(end < start)
+    if(!validateDateRange(educationStartDateTrimed,educationEndDateTrimed)){
       error.educationEndDate = "End date cannot be earlier than the start date."
     }
     return error
@@ -82,15 +95,11 @@ export function validatePersonalDetails(personalDetails){
         error.state = "State name is required"
       }
 
-      const githubRegex = /^https:\/\//.test(personalDetails.github.trim())
-
-      if(personalDetails.github.trim() && !githubRegex){
+      if(!isHttpsUrl(personalDetails.github.trim())){
         error.github = "Invalid url"
       }
 
-      const linkedinRegex = /^https:\/\//.test(personalDetails.linkedin.trim())
-
-      if(personalDetails.linkedin && !linkedinRegex){
+      if(!isHttpsUrl(personalDetails.linkedin.trim())){
         error.linkedin = "Invalid url"
       }
 
@@ -107,7 +116,7 @@ export function validateSkills(skills){
     }
 
     if(!skill.skillsList.trim()){
-      error[`skillsList_${skill.id}`] = "skills is required"
+      error[`skillsList_${skill.id}`] = "Skills is required"
     }
     }
 
@@ -131,15 +140,11 @@ export function validateProjects(projects){
       error[`description_${project.id}`] = "Description is required "
       }
 
-      const projectGithubRegex = /^https:\/\//.test(project.projectGithub.trim())
-
-      if(project.projectGithub.trim() && !projectGithubRegex){
+      if(!isHttpsUrl(project.projectGithub.trim())){
         error[`projectGithub_${project.id}`] = "Invalid url"
       }
 
-      const projectLiveLinkRegex = /^https:\/\//.test(project.projectLiveLink.trim())
-
-      if(project.projectLiveLink.trim() && !projectLiveLinkRegex){
+      if(!isHttpsUrl(project.projectLiveLink.trim())){
         error[`projectLiveLink_${project.id}`] = "Invalid url"
       }
     }
@@ -154,11 +159,11 @@ export function validateExperiences(experiences){
     for(let experience of experiences){
 
       if(!experience.companyName.trim()){
-        error[`companyName_${experience.id}`] = "company name is required"
+        error[`companyName_${experience.id}`] = "Company name is required"
       }
 
       if(!experience.role.trim()){
-        error[`role_${experience.id}`] = "role is required"
+        error[`role_${experience.id}`] = "Role is required"
       }
 
       if(!experience.description.trim()){
@@ -175,10 +180,7 @@ export function validateExperiences(experiences){
     if(!experienceEndDateTrimed){
       error[`experienceEndDate_${experience.id}`] = "Ended date is required"
     }else 
-    if(experienceStartDateTrimed && experienceEndDateTrimed){
-      const start = new Date(experienceStartDateTrimed)
-      const end =   new Date(experienceEndDateTrimed)
-      if(end < start)
+    if(!validateDateRange(experienceStartDateTrimed,experienceEndDateTrimed)){
        error[`experienceEndDate_${experience.id}`] = "End date cannot be earlier than the start date."
     }
     }

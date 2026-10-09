@@ -97,10 +97,6 @@ export default function PreviewResume({getData, skippedProjects, skippedExperien
                     <h3 className="preview-resume-section-heading">Summary</h3>      
                     <p>{getData.summary.professionalSummary}</p>
                 </div>
-                <div className="skills-resume-section ">
-                    <h3 className="preview-resume-section-heading">Skills</h3>
-                    {skillsRenderEl}
-                </div>
                 {!skippedProjects && 
                 <div className="projects-resume-section ">
                     <h3 className="preview-resume-section-heading">Projects</h3>
@@ -113,6 +109,10 @@ export default function PreviewResume({getData, skippedProjects, skippedExperien
                         {experiencesRenderEl}
                 </div> 
                 } 
+                <div className="skills-resume-section ">
+                    <h3 className="preview-resume-section-heading">Skills</h3>
+                    {skillsRenderEl}
+                </div>
                 <div className="educatiion-resume-section">
                     <h3 className="preview-resume-section-heading">Education</h3>
                     <div className="education-resume-contanier">
