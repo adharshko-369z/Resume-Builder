@@ -19,13 +19,13 @@ export default function Skills({formData,errors,onChange,onClick,deleteArrayItem
                     <button className={`delete-btn ${deleteBtnDisabled}`} type="button" onClick={()=> deleteArrayItem(skill.id, commonAttributes["data-section"])} disabled={formData.skills.length === 1}>X</button>
                 </div>
                 <div className="label-input-error-container">
-                    <label htmlFor="category">Category</label>
-                    <input type="text" id="category" name="category" {...commonAttributes} value={skill.category} placeholder="Frontend"   required/>
+                    <label htmlFor={`category_${skill.id}`}>Category</label>
+                    <input type="text" id={`category_${skill.id}`} name="category" {...commonAttributes} value={skill.category} placeholder="Frontend"   required/>
                     <p className="error-message" >{errors[`category_${skill.id}`]}</p>
                 </div>
                 <div className="label-input-error-container">
-                    <label htmlFor="skillsList">Skills</label>
-                    <textarea rows="5" id="skillsList" name="skillsList" {...commonAttributes} value={skill.skillsList} placeholder="HTML, CSS, JavaScript, React"   required></textarea>
+                    <label htmlFor={`skillsList_${skill.id}`}>Skills</label>
+                    <textarea rows="5" id={`skillsList_${skill.id}`} name="skillsList" {...commonAttributes} value={skill.skillsList} placeholder="HTML, CSS, JavaScript, React"   required></textarea>
                     <p className="error-message" >{errors[`skillsList_${skill.id}`]}</p>
                 </div>
             </div>)

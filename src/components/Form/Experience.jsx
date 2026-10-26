@@ -30,30 +30,30 @@ export default function Experience({formData, errors, onClick, deleteArrayItem, 
                 </div>
                 <div className="input-cols-container">
                     <div className="label-input-error-container">
-                        <label htmlFor="companyName">Company Name</label>
-                        <input type="text" id="companyName" name="companyName" {...commonAttributes} value={experience.companyName} placeholder="ABC Company"   required/>
+                        <label htmlFor={`companyName_${experience.id}`}>Company Name</label>
+                        <input type="text" id={`companyName_${experience.id}`} name="companyName" {...commonAttributes} value={experience.companyName} placeholder="ABC Company"   required/>
                         <p className="error-message" >{errors[`companyName_${experience.id}`]}</p>
                     </div>
                     <div className="label-input-error-container">
-                        <label htmlFor="role">Role</label>
-                        <input type="text" id="role" name="role" {...commonAttributes} value={experience.role} placeholder="Frontend Developer Intern"   required/>
+                        <label htmlFor={`role_${experience.id}`}>Role</label>
+                        <input type="text" id={`role_${experience.id}`} name="role" {...commonAttributes} value={experience.role} placeholder="Frontend Developer Intern"   required/>
                         <p className="error-message" >{errors[`role_${experience.id}`]}</p>
                     </div>
                 </div>
                 <div className="label-input-error-container">
-                    <label htmlFor="expDescription">Description</label>
-                    <textarea rows="5" id="expDescription" name="description" {...commonAttributes} value={experience.description} placeholder=" Built responsive user interfaces using React and JavaScript."   required></textarea>
+                    <label htmlFor={`expDescription_${experience.id}`}>Description</label>
+                    <textarea rows="5" id={`expDescription_${experience.id}`} name="description" {...commonAttributes} value={experience.description} placeholder=" Built responsive user interfaces using React and JavaScript."   required></textarea>
                     <p className="error-message" >{errors[`description_${experience.id}`]}</p>
                 </div>
                  <div className="input-cols-container">
                     <div className="label-input-error-container">
-                        <label htmlFor="experienceStartDate">Start</label>
-                        <input type="date" id="experienceStartDate" name="experienceStartDate"  {...commonAttributes} value={experience.experienceStartDate} required/>
+                        <label htmlFor={`experienceStartDate_${experience.id}`}>Start</label>
+                        <input type="date" id={`experienceStartDate_${experience.id}`} name="experienceStartDate"  {...commonAttributes} value={experience.experienceStartDate} required/>
                         <p className="error-message" >{errors[`experienceStartDate_${experience.id}`]}</p>
                     </div>
                     <div className="label-input-error-container">
-                        <label htmlFor="experienceEndDate">End</label>
-                        <input type="date" id="experienceEndDate" name="experienceEndDate"  {...commonAttributes} value={experience.experienceEndDate} required/>
+                        <label htmlFor={`experienceEndDate_${experience.id}`}>End</label>
+                        <input type="date" id={`experienceEndDate_${experience.id}`} name="experienceEndDate"  {...commonAttributes} value={experience.experienceEndDate} required/>
                         <p className="error-message" >{errors[`experienceEndDate_${experience.id}`]}</p>
                     </div>
                  </div>
